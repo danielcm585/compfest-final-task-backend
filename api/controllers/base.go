@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"restgo/api/middlewares"
 	"restgo/api/models"
 	"restgo/api/responses"
@@ -61,7 +62,7 @@ func (a *App) initializeRoutes() {
 
 func (a *App) RunServer() {
 	log.Printf("\nServer starting on port 5000")
-	log.Fatal(http.ListenAndServe(":5000", a.Router))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("GO_PORT"), a.Router))
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
