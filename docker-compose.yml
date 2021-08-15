@@ -1,6 +1,7 @@
 version: "3.7"
 services: 
   database:
+    container_name: postgres_container
     image: postgres
     restart: always
     env_file:
@@ -10,6 +11,7 @@ services:
     volumes:
       - data:/var/lib/postgresql/data
   server:
+    container_name: go_container
     build:
       context: .
       dockerfile: Dockerfile
@@ -21,6 +23,7 @@ services:
     ports:
       - "5000:5000"
   pgadmin:
+    container_name: pgadmin_container
     image: dpage/pgadmin4
     restart: always
     environment: 
