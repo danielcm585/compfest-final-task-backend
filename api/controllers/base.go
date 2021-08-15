@@ -62,6 +62,9 @@ func (a *App) initializeRoutes() {
 
 func (a *App) RunServer() {
 	port := os.Getenv("PORT")
+	if port == "" {
+		port = "5000"
+	}
 	log.Printf("\nServer starting on port " + port)
 	// log.Fatal(http.ListenAndServe(":"+port, a.Router))
 	http.ListenAndServe(":"+port, a.Router)
