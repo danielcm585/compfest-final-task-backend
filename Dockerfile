@@ -17,6 +17,6 @@ RUN apk add --no-cache ca-certificates && update-ca-certificates
 
 COPY --from=builder /go/src/cfbackendapp/build/app /usr/bin/cfbackendapp
 
-EXPOSE 5000 5000
+EXPOSE 5000
 
-ENTRYPOINT [ "/usr/bin/cfbackendapp" ]
+CMD [ "./usr/bin/cfbackendapp" ]
